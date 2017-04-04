@@ -2,6 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: `<alert type="success">Well done {{name}}!</alert>`,
+  template: `<pm-products></pm-products>`,
 })
 export class AppComponent  { name = 'Angular'; }
