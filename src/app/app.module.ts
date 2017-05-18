@@ -8,10 +8,20 @@ import {AlertModule} from 'ng2-bootstrap';
 import {ProductListComponent} from "./products/product-list.component";
 import {ProductFilterPipe} from "./products/product-filter.pipe";
 import {StarComponent} from "./shared/star.component";
+import {HttpModule} from "@angular/http";
+import {ProductDetailComponent} from "./products/product-detail.component";
+import {WelcomeComponent} from "./home/welcome.component";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
-  imports:      [ BrowserModule, AlertModule.forRoot(), FormsModule ],
-  declarations: [ AppComponent, ProductListComponent, ProductFilterPipe, StarComponent],
+  imports:      [ BrowserModule, AlertModule.forRoot(), FormsModule, HttpModule, RouterModule.forRoot([
+    {path: 'products', component: ProductListComponent},
+    {path: 'product/:id', component: ProductDetailComponent},
+    {path: 'welcome', component: WelcomeComponent},
+    {path: '', redirectTo: 'welcome', pathMatch: 'full'},
+    {path: '**', redirectTo: 'welcome', pathMatch: 'full'}])
+  ],
+  declarations: [ AppComponent, ProductListComponent, ProductFilterPipe, StarComponent, WelcomeComponent, ProductDetailComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
